@@ -28,14 +28,13 @@ class ParticipantesCtrl(object):
             res = {
                 'success': False,
             }
-            # print(request.form)
-            # print(request.files)
             if request.method == 'POST':
                 # print(request.files['fileimg'] == None)
                 if 'img' not in request.files:
                     res['success'] = False
-                    res['msg'] = 'Debe seleccionar un archivo del escrito'
+                    res['msg'] = 'Debe seleccionar una selfie'
                     res['code'] = 400
+                    return res['msg']
                 imgfile = request.files['img'] if 'img' in request.files else None
                 if imgfile or allowed_file(imgfile, 'img'):
                     imgfilename = uuid.uuid4().hex + secure_filename(imgfile.filename)
@@ -57,11 +56,11 @@ class ParticipantesCtrl(object):
                 else:
                     print('err')
                     res['success'] = False
-                    res['msg'] = 'Formato no aceptado'
+                    res['msg'] = 'Formato no aceptado, suba una imagen PNG o JPG'
                     res['code'] = 400
+                    return res['msg']
         except Exception as e:
             print(e)
             db.session.rollback()
             res['msg'] = 'Hubo un error, inténtelo nuevamente'
-        finally:
-            return response(json.dumps(res), mimetype='application/json')
+            return res['msg']
