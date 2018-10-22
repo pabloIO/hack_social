@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, Response
-from flask_cors import CORS, cross_origin
+#from flask_cors import CORS, cross_origin
 from config.config import env
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__, template_folder="public")
@@ -10,7 +10,7 @@ app.config['UPLOAD_FOLDER'] = env['UPLOADS_DIR']
 app.config['SQLALCHEMY_DATABASE_URI'] = env['SQL_CONF']['DB_URI']
 db = SQLAlchemy(app)
 
-cors = CORS(app, resources={r"/login": {"origins": "http://localhost:3000"}})
+#cors = CORS(app, resources={r"/login": {"origins": "http://localhost:3000"}})
 
 from controllers import participantes_ctrl
 
