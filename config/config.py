@@ -9,7 +9,7 @@ env = {
     'APP'       : Flask(__name__, template_folder="public"),
     'SQL_CONF'  : {
         'DB_NAME'  : 'premio_falso',
-        'DB_URI'   : str.format('sqlite:///{0}', os.path.abspath('database/concurso.db')) if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else 'sqlite:////home/lalibreria/LIBREria/database/concurso.db'
+        'DB_URI'   : str.format('sqlite:///{0}', os.path.abspath('database/concurso.db')) if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else 'sqlite://///home/GROVERLUIS2018/hack_social/hack_social/database/concurso.db'
     },
     'UPLOADS_DIR': os.path.abspath('static') if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else os.path.abspath('hack_social/static'),
     'ALLOWED_EXTENSIONS_IMG': set(['png', 'svg', 'gif', 'jpg', 'jpeg']),
