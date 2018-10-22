@@ -28,8 +28,9 @@ def main():
 ####### PARTICIPANT ROUTES ########
 ###################################
 @app.route(env['API_VERSION'] + "/test", methods=['GET'])
-def upload_book():
+def test():
     return 'hola'
+    
 @app.route(env['API_VERSION'] + "/concurso", methods=['POST', 'GET'])
 def upload_book():
     return participantes_ctrl.ParticipantesCtrl.register(db, request, Response)
