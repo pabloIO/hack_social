@@ -11,7 +11,7 @@ env = {
         'DB_NAME'  : 'premio_falso',
         'DB_URI'   : str.format('sqlite:///{0}', os.path.abspath('database/concurso.db')) if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else 'sqlite:////home/lalibreria/LIBREria/database/concurso.db'
     },
-    'UPLOADS_DIR': os.path.abspath('static') if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else os.path.abspath('LIBREria/static'),
+    'UPLOADS_DIR': os.path.abspath('static') if 'PYTHONANYWHERE_DOMAIN' not in  os.environ else os.path.abspath('hack_social/static'),
     'ALLOWED_EXTENSIONS_IMG': set(['png', 'svg', 'gif', 'jpg', 'jpeg']),
     'API_VERSION': '/api/v1',
 }

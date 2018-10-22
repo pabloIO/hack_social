@@ -62,3 +62,5 @@ class ParticipantesCtrl(object):
             print(e)
             db.session.rollback()
             res['msg'] = 'Hubo un error, inténtelo nuevamente'
+        finally:
+            return response(json.dumps(res), mimetype='application/json')
