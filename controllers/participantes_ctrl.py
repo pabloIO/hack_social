@@ -52,6 +52,7 @@ class ParticipantesCtrl(object):
                     imgfile.save(os.path.join(env['UPLOADS_DIR'] + '/images', imgfilename))
                     res['success'] = True
                     res['route'] = 'http://se.unifranz.edu.bo/'
+                    return redirect(res['route'], code=302)
                 else:
                     print('err')
                     res['success'] = False
@@ -61,5 +62,3 @@ class ParticipantesCtrl(object):
             print(e)
             db.session.rollback()
             res['msg'] = 'Hubo un error, inténtelo nuevamente'
-        finally:
-            return response(json.dumps(res), mimetype='application/json')
