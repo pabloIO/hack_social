@@ -49,6 +49,7 @@ class ParticipantesCtrl(object):
                     )
                     db.session.add(newRegister)
                     db.session.commit()
+                    print(env['UPLOADS_DIR'])
                     imgfile.save(os.path.join(env['UPLOADS_DIR'] + '/images', imgfilename))
                     res['success'] = True
                     res['route'] = 'http://se.unifranz.edu.bo/'
