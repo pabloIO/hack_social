@@ -35,6 +35,10 @@ def test():
 def upload_book():
     return participantes_ctrl.ParticipantesCtrl.register(db, request, Response)
 
+@app.route(env['API_VERSION'] + "/participantes", methods=['GET'])
+def get_participants():
+    return participantes_ctrl.ParticipantesCtrl.participants(db, Response)
+
 # @app.route(env['API_VERSION'] + "/libro/denounce", methods=['POST', 'GET'])
 # def denounce_book():
 #     return libros_ctrl.LibrosCtrl.denounceBook(db, request, Response)

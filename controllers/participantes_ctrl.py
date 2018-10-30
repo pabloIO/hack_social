@@ -64,3 +64,27 @@ class ParticipantesCtrl(object):
             db.session.rollback()
             res['msg'] = 'Hubo un error, inténtelo nuevamente'
             return res['msg']
+    @staticmethod
+    def participants(db, response):
+        try:
+            res = {
+                'success': False,
+                'msg': '',
+                'participants': []
+            }
+            p = database.Participantes.query.filter(
+                    database.Participantes.activo == 1
+                ).all()
+            participants = [ { 
+                    'nombre_completo': i.nombre + ' ' + i.apellidos,
+                    'codigo': i.codigo_estudiante,
+                    'genero': i.genero,
+                    'imagen': i.imagen,
+                    'fecha':  str(i.fecha_creacion)
+                    } for i in p ]
+            res['participants'] = participants
+        except Exception as e:
+            print(e)
+            res['msg'] = e
+        finally:
+            return response(json.dumps(res), mimetype='application/json')
